@@ -182,12 +182,13 @@ def main():
 
     st.sidebar.markdown("### Admin / Finance")
     age = st.sidebar.slider("Age", 15, 70, 20)
-
+    gender = st.sidebar.selectbox("Gender", options=["Female", "Male"], index=0)
+    gender_1 = 1 if gender == "Male" else 0
     tuition = 1 if st.sidebar.toggle("Tuition fees paid", True) else 0
     debtor = 1 if st.sidebar.toggle("Student in debt", False) else 0
     scholarship = 1 if st.sidebar.toggle("Scholarship holder", False) else 0
 
-    with st.sidebar.expander("Optional: Economic context", expanded=False):
+    with st.sidebar.expander("Economic context (Optional)", expanded=False):
         gdp = st.number_input("GDP", -10.0, 10.0, 1.5)
         inflation = st.number_input("Inflation rate", -10.0, 20.0, 1.0)
         unemployment = st.number_input("Unemployment rate", 0.0, 30.0, 10.0)
@@ -216,6 +217,7 @@ def main():
         "avg_grade": avg_grade,
         "avg_evaluations": avg_evaluations,
         "Age": age,
+        "Gender": gender_1,
         "Tuition_fees_up_to_date": tuition,
         "Debtor": debtor,
         "Scholarship_holder": scholarship,
